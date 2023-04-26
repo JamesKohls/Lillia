@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Pa2: James Kohls</title>
+  <style>
+    .button {
+      background-color: #4CAF50;
+      /* Green */
+      border: none;
+      color: white;
+      padding: 6px 8px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .button:hover {
+      background-color: #4f3b96; /* Green */
+      color: white;
+    }
+
+    .button2 {
+      background-color: #008CBA;
+    }
+
+    /* Blue */
+    .button3 {
+      background-color: #f44336;
+    }
+
+    /* Red */
+    .button4 {
+      background-color: #e7e7e7;
+      color: black;
+    }
+
+    /* Gray */
+    .button5 {
+      background-color: #555555;
+    }
+
+    /* Black */
+    table, th, td {
+      
+      border: 1px solid black;
+      border-radius: 5px;
+      background-color: #a5bcd1;
+      color: rgb(12, 5, 5);
+    }
+
+    table, th2, td2 {
+      
+      border: 1px solid black;
+      border-radius: 5px;
+      background-color: #235686;
+      color: rgb(12, 5, 5);
+    }
+
+    .slider2 {
+      width: 78%;
+    }
+
+
+  </style>
+
+
+
+</head>
+
+<body onload="main()" background-image: url("lib/lillia.jpg")>
+  
+  
+  <div>
+    <div style="float: left; width: 350px">
+
+      <br>
+
+    </div>
+
+    <div style="float: left; width: 680px">
+
+      <br> <br> <br> <br> <br> <br>
+
+      <canvas id="webgl" width="670" height="670" style="border: 4px solid rgb(13, 12, 104);">
+        Please use a browser that supports "canvas"
+      </canvas>
+
+    </div>
+
+    <br> <br> <br> <br> <br> <br>
+
+    <table style="width:500px" >
+      <tr>
+        <th style="width:33%"> Controls </th>
+        <th style="width:33%"> Animations </th>
+        <th style="width:33%"> Accreditations </th>
+      </tr>
+      <tr>
+        <td>
+          <center>
+            <label>Camera Angle can be controlled by dragging left mouse button</label>
+            <p>
+              Camera Angle (horizontal) <input type="range" min="-100" max="100" value="0" class="slider" id="angleSlider"
+                oninput="this.nextElementSibling.value = this.value">
+              <output>0</output>
+              <br>
+              Model Height <input type="range" min="-10" max="10" value="0" class="slider" id="heightSlider"
+                oninput="this.nextElementSibling.value = this.value">
+              <output>0</output>
+              <br>
+  
+          </center>
+        </td>
+        <td>
+          <center>
+            <label>Full Body Animation</label>
+            
+            <button id="walkButton" class="button button2">Walk</button>
+            <button id="standButton" class="button button2">Stand</button>
+            
+            <label>Upper Body Animation</label>
+            
+            <button id="waveButton" class="button button2">Wave</button>
+            <button id="staffButton" class="button button2">Staff</button>
+            <p>
+              <label>Shift click for Special Animation!</label>
+          </center>
+        </td>
+        <td>
+          <center>
+            <label>Model based off the Character Lillia from League of Legends</label>
+            <p>
+            <label>Special thanks to John Beresford</label>
+        </td>
+      </tr>
+    </table>
+    
+    <div style="float: left; width: 500px">
+      
+      <table style="width:500px">
+        <tr>
+          <th style="width:33%"> LEFT ARM </th>
+          <th style="width:33%"> HEAD </th>
+          <th style="width:33%"> RIGHT ARM </th>
+        </tr>
+        <tr>
+          <td>
+            <center>
+              <label>Shoulder Up/Down</label>
+                <input type="range" min="-30" max="90" value="0" class="slider" id="leftArmForSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>-90</output> 
+              <label>Shoulder  Forward/back</label>
+                <input type="range" min="-120" max="120" value="0" class="slider" id="leftArmSidSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+              <label>Elbow Up/Down</label>
+                <input type="range" min="0" max="140" value="0" class="slider" id="leftElbowForSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+              <label>Elbow Forward/back</label>
+                <input type="range" min="-170" max="0" value="0" class="slider" id="leftArmElbowSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+            </center>
+          </td>
+          <td>
+            <center>
+              <label>Head Up/Down</label>
+                <input type="range" min="-30" max="30" value="0" class="slider" id="headUpSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output> 
+              <label>Head Sideways</label>
+                <input type="range" min="-120" max="-60" value="-90" class="slider" id="headSideSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>-90</output>
+              <label>Left Ear</label>
+                <input type="range" min="0" max="60" value="45" class="slider" id="leftEarSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>45</output>
+              <label>Right Ear</label>
+                <input type="range" min="-60" max="0" value="-45" class="slider" id="rightEarSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>-45</output>
+              <label>Hair</label>
+                <input type="range" min="-10" max="80" value="25" class="slider" id="hairSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+            </center>
+          </td>
+          <td>
+            <center>
+              <label>Shoulder Up/Down</label>
+                <input type="range" min="-90" max="30" value="0" class="slider" id="rightArmForSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>-90</output> 
+              <label>Shoulder  Forward/back</label>
+                <input type="range" min="-120" max="120" value="0" class="slider" id="rightArmSidSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+              <label>Elbow Up/Down</label>
+                <input type="range" min="-140" max="0" value="0" class="slider" id="rightElbowForSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output> 
+              <label>Elbow Forward/back</label>
+                <input type="range" min="-180" max="0" value="0" class="slider" id="rightArmElbowSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:500px">
+        <tr>
+          <th style="width:33%"> FRONT </th>
+          <th style="width:33%"> TORSO </th>
+          <th style="width:33%"> BACK </th>
+        </tr>
+        <tr>
+          <td>
+            <center>
+              <label>Front</label>
+                <input type="range" min="-20" max="20" value="0" class="slider" id="frontSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+            </center>
+          </td>
+          <td>
+            <center>
+              <label>Torso</label>
+                <input type="range" min="-45" max="45" value="0" class="slider" id="torsoSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+                <label>Whole Body</label>
+                <input type="range" min="-45" max="45" value="0" class="slider" id="wholeSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+            </center>
+          </td>
+          <td>
+            <center>
+              <label>Butt</label>
+                <input type="range" min="-20" max="20" value="0" class="slider" id="buttSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:500px">
+        <tr>
+          <th style="width:25%"> FRONT LEFT </th>
+          <th style="width:25%"> FRONT RIGHT </th>
+          <th style="width:25%"> BACK LEFT </th>
+          <th style="width:25%"> BACK RIGHT </th>
+        </tr>
+        <tr>
+          <td>
+            <center>
+              <label>Leg</label> <br>
+                <input type="range" min="-40" max="40" value="-5" class="slider2" id="frontLeftHipSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>-5</output> 
+              <label>Knee</label> <br>
+                <input type="range" min="-30" max="40" value="0" class="slider2" id="frontLeftLegSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+            </center>
+          </td>
+          <td>
+            <center>
+              <label>Leg</label> <br>
+                <input type="range" min="-40" max="40" value="-5" class="slider2" id="frontRightHipSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>-5</output>
+              <label>Knee</label> <br>
+                <input type="range" min="-30" max="40" value="0" class="slider2" id="frontRightLegSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+            </center>
+          </td>
+          <td>
+            <center>
+              <label>Leg</label> <br>
+                <input type="range" min="-20" max="60" value="32" class="slider2" id="backLeftHipSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>32</output> 
+              <label>Knee</label> <br>
+                <input type="range" min="-30" max="30" value="0" class="slider2" id="backLeftLegSlider" size="%50"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+          </td>
+          <td>
+            <center>
+              <label>Leg</label> <br>
+                <input type="range" min="-20" max="60" value="32" class="slider2" id="backRightHipSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>32</output> 
+              <label>Knee</label> <br>
+                <input type="range" min="-30" max="30" value="0" class="slider2" id="backRightLegSlider"
+                oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+
+  
+
+  
+
+
+  <script src="lib/webgl-utils.js"></script>
+  <script src="lib/webgl-debug.js"></script>
+  <script src="lib/cuon-utils.js"></script>
+  <script src="lib/cuon-matrix.js"></script>
+  <script src="Cube.js"></script>
+  <script src="Circle.js"></script>
+  <script src="Points.js"></script>
+  <script src="Triangle.js"></script>
+  <script src="Cylinder.js"></script>
+  <script src="Sphere.js"></script>
+  <script src="blockyAnimal.js"></script>
+
+
+</body>
+
+</html>
