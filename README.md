@@ -6,7 +6,7 @@ Lillia is a project based off the character "Lillia" from League of Legends. She
 
 ## Demonstration
 
-Lillia is hosted [here](https://pip.pypa.io/en/stable/) with Github Pages.
+Lillia is hosted [here](https://jameskohls.github.io/Lillia/) with Github Pages.
 
 
 ## Usage
