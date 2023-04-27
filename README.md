@@ -2,7 +2,7 @@
 
 Lillia is a project based off the character "Lillia" from League of Legends. She is constructed from modified Cylinder and Sphere Primitives and rigged with joints with the torso as their origin. 
 
-![Lillia](https://user-images.githubusercontent.com/63087715/234762648-667a8d7e-3055-424e-ad4d-99bc2def2eb2.gif)
+![Lillia](https://user-images.githubusercontent.com/63087715/234763165-9c78390a-ade1-4bf9-9f71-f89cedebf42b.gif)
 
 ## Demonstration
 
